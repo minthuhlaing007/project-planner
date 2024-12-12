@@ -2,7 +2,7 @@
   <div class="home">
       <h1>Home Page</h1>
       <div v-for="project in projects" :key="project.id">
-        <SinglePage :project="project"></SinglePage>
+        <SinglePage :project="project" @delete="deletePage"></SinglePage>
       </div>
   </div>
 </template>
@@ -14,6 +14,13 @@ export default {
   data() {
     return {
       projects:[]
+    }
+  },
+  methods:{
+    deletePage(id){
+      this.projects = this.projects.filter(project=>{
+        return project.id != id;
+      })
     }
   },
   mounted() {
