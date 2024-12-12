@@ -1,5 +1,5 @@
 <template>
-  <div class="project">
+  <div class="project" :class="{complete:project.complete}">
     <div class="flexing">
       <div>
         <h3 @click="showDetail =! showDetail">{{ project.title }}</h3>
@@ -13,6 +13,7 @@
     <div v-if="showDetail">
       <p>{{ project.detail }}</p>
     </div>
+    <p>{{ project.complete }}</p>
   </div>
 </template>
 
@@ -42,7 +43,8 @@ export default {
   padding: 20px;
   background-color: #f2f2f2;
   margin: 10px;
-  border-left: 4px solid crimson;
+  border-left: 10px solid crimson;
+  border-radius: 20px;
 }
 
 h3 {
@@ -60,5 +62,8 @@ span{
 span:hover{
   color: red;
   cursor: pointer;
+}
+.complete{
+  border-left-color: green;
 }
 </style>
