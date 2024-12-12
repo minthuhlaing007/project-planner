@@ -2,14 +2,15 @@
   <div class="home">
       <h1>Home Page</h1>
       <div v-for="project in projects" :key="project.id">
-        <h3>{{ project.title }}</h3>
-        <p>{{ project.detail }}</p>
+        <SinglePage :project="project"></SinglePage>
       </div>
   </div>
 </template>
 
 <script>
+import SinglePage from '../components/SinglePage'
 export default {
+  components: { SinglePage },
   data() {
     return {
       projects:[]
