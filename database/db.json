@@ -2,27 +2,27 @@
   "projects": [
     {
       "id": "1",
-      "title": "chief officer",
-      "detail": "creative coder chief officer",
-      "complete":true
+      "title": "officer",
+      "detail": "creative coder officer",
+      "complete": false
     },
     {
       "id": "2",
       "title": "web developer",
       "detail": "creative coder web developer",
-      "complete":false
+      "complete": false
     },
     {
       "id": "3",
       "title": "designer",
       "detail": "creative coder designer",
-      "complete":true
+      "complete": false
     },
     {
       "id": "4",
       "title": "producer",
       "detail": "creative coder producer",
-      "complete":false
+      "complete": true
     }
   ]
 }

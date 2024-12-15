@@ -1,13 +1,13 @@
 <template>
-  <div class="project" :class="{complete:project.complete}">
+  <div class="project" :class="{ complete: project.complete }">
     <div class="flexing">
       <div>
-        <h3 @click="showDetail =! showDetail">{{ project.title }}</h3>
+        <h3 @click="showDetail = !showDetail">{{ project.title }}</h3>
       </div>
       <div>
         <span class="material-icons" @click="deleteProject">delete</span>
         <span class="material-icons">edit</span>
-        <span class="material-icons">done</span>
+        <span class="material-icons" @click="completeProject">done</span>
       </div>
     </div>
     <div v-if="showDetail">
@@ -21,20 +21,36 @@
 export default {
   props: ["project"],
   data() {
-    return{
-      showDetail:false,
-      api: "http://localhost:3000/projects/"+this.project.id
-    }
+    return {
+      showDetail: false,
+      api: "http://localhost:3000/projects/" + this.project.id,
+    };
   },
-  methods:{
-    deleteProject(){
-      fetch(this.api,{method:"DELETE"})
-      .then(()=>{
-        this.$emit("delete",this.project.id)
+  methods: {
+    deleteProject() {
+      fetch(this.api, { method: "DELETE" })
+        .then(() => {
+          this.$emit("delete", this.project.id);
+        })
+        .catch((error) => console.log(error.message));
+    },
+    completeProject() {
+      let updataCompleteRoute = this.api;
+      fetch(updataCompleteRoute, {
+        method: "PATCH",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          complete: !this.project.complete,
+        }),
       })
-      .catch(error=>console.log(error.message))
-    }
-  }
+      .then(()=>{
+        this.$emit("complete",this.project.complete)
+      })
+      .catch(error=>console.log(error.message));
+    },
+  },
 };
 </script>
 
@@ -56,14 +72,14 @@ h3 {
   justify-content: space-between;
   align-items: center;
 }
-span{
+span {
   margin-left: 25px;
 }
-span:hover{
+span:hover {
   color: red;
   cursor: pointer;
 }
-.complete{
+.complete {
   border-left-color: green;
 }
 </style>
