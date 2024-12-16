@@ -10,13 +10,13 @@
       "id": "2",
       "title": "web developer",
       "detail": "creative coder web developer",
-      "complete": false
+      "complete": true
     },
     {
       "id": "3",
       "title": "designer",
       "detail": "creative coder designer",
-      "complete": false
+      "complete": true
     },
     {
       "id": "4",

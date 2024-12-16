@@ -45,10 +45,10 @@ export default {
           complete: !this.project.complete,
         }),
       })
-      .then(()=>{
-        this.$emit("complete",this.project.complete)
-      })
-      .catch(error=>console.log(error.message));
+        .then(() => {
+          this.$emit("complete", this.project.id);
+        })
+        .catch((error) => console.log(error.message));
     },
   },
 };

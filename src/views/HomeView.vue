@@ -30,6 +30,7 @@ export default {
       let findProject = this.projects.find((project) => {
         return project.id === id;
       });
+      console.log(findProject,id,this.projects);
       findProject.complete = !findProject.complete;
     },
   },
